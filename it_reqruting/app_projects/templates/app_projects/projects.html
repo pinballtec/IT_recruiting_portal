@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <title>Projects</title>
 </head>
-<body>
+<body></body>
   <h2>There will be all projects</h2>
   {% for project in projects %}
-  <p>Number of project: {{ project.id }}</p>
-  <h3>Name of the project: <a href="{% url 'project' project.id %}">{{ project.title }}</a></h3>
-  <em>{{ project.description }}</em>
+  <hr>
+      <p>Number of project: {{ project.id }}</p>
+      <h3>Name of the project: <a href="{% url 'project' project.id %}">{{ project.title }}</a></h3>
+      <em>{{ project.description }}</em>
+      <h4><a href="{% url 'update-project' project.id %}">Update Project</a></h4>
+    <h4><a href="{% url 'delete' project.id %}">Delete</a></h4>
   {% endfor %}
-</body>
+
+  <hr>
+
+    <strong><a href="{% url 'create-project' %}">Add<Project></Project></a></strong>
+
+
 </html>
