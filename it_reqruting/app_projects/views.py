@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .models import Project
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Project, Tag
 from .froms import ProjectForm
 # Create your views here.
 
@@ -45,3 +45,11 @@ def deleteProject(request, pk):
         return redirect('projects')
     context = {'object': project}
     return render(request, 'app_projects/delete.html', context)
+
+
+def filter_projects_by_tags(request, tag_slug):
+    """filter function for objects(db)"""
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    projects = Project.objects.filter(tags__in=[tag])
+    context = {'projects': projects}
+    return render(request, "projects/projects.html", context)

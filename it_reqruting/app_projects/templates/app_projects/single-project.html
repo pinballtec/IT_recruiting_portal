@@ -15,5 +15,12 @@
         {% endfor %}
     </ul>
     <em>{{ project.description }}</em>
+
+    <div class="singleProject__toolStack">
+      {% for tag in project.tags.all %}
+          <a href="{% url 'tag_filter' tag.slug %}" class="tag tag--pill tag--sub tag--lg">{{tag}}</a>
+      {% endfor %}
+    </div>
+
 </body>
 </html>
