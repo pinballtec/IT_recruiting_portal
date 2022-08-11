@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+        <h2>You have been logged out from your profile</h2>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <a href="{% url 'login' %}">Login</a>
+            </small>
+        </div>
+    {% endblock content %}
+</body>
+</html>
