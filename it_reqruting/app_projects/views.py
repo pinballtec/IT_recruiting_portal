@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project, Tag
-from .froms import ProjectForm
+from .forms import ProjectForm
 # Create your views here.
 
 
