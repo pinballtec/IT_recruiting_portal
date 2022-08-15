@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Info about project</h1>
-    <h3>Project n.{{ project.id }}</h3>
+    <h3>review: {% url 'user-profile' review.owner %}</h3>
     <p>{{ project.title }}</p>
     <br>
     <ul>

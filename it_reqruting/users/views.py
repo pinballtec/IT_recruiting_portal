@@ -25,6 +25,17 @@ def profiles(request):
     return render(request, 'users/profiles.html', context)
 
 
+def userProfile(request, username):
+    profile = Profile.objects.get(username=username)
+
+    main_skills = profile.skills.all()[:2]
+    extra_skills = profile.skills.all()[2:]
+
+    context = {'profile': profile, 'main_skills': main_skills,
+               "extra_skills": extra_skills}
+    return render(request, 'users/user-profile.html', context)
+
+
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
