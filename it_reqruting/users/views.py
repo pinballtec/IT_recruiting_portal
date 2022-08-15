@@ -28,3 +28,12 @@ def profiles(request):
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')
+
+
+@login_required
+def indox(request):
+    profile = request.user.profile
+    messageRequests = profile.messages.all()
+    unreadCount = messageRequests.filter(is_read=False).count()
+    context = {'messageRequests': messageRequests, 'unreadCount': unreadCount}
+    return render(request, 'users/inbox.html', context)
