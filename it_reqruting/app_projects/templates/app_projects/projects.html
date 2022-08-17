@@ -28,5 +28,6 @@
         <strong><a href="{% url 'create-project' %}">Add<Project></Project></a></strong>
 
     </body>
+    {% include 'pagination.html' with queryset=projects custom_range=custom_range %}
     {% endblock %}
 </html>
