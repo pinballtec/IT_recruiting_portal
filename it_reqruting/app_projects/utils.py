@@ -1,4 +1,4 @@
-from .models import Project, Tag
+from it_reqruting.app_projects.models import Project, Tag
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 

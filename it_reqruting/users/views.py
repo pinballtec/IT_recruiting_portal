@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Message, Profile
+from .models import Profile
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
+from .utils import paginateProfiles, searchProfiles
 # Create your views here.
 
 
@@ -20,8 +21,11 @@ def register(request):
 
 
 def profiles(request):
-    profiles = Profile.objects.all()
-    context = {'profiles': profiles}
+    profiles, search_query = searchProfiles(request)
+
+    custom_range, profiles = paginateProfiles(request, profiles, 6)
+    context = {'profiles': profiles, 'search_query': search_query,
+               'custom_range': custom_range}
     return render(request, 'users/profiles.html', context)
 
 
